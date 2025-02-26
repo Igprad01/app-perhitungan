@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/home.vue'
+import HomeView from '../views/Splitbill.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
