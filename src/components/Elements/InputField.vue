@@ -6,12 +6,13 @@ defineProps({
     default: 'text',
   },
 
-  inputdata: String,
+  teksInput: String,
+  classname: String,
 })
 </script>
 
 <template>
   <div>
-    <input :type="type" :placeholder="inputdata" class="" />
+    <input :type="type" :placeholder="teksInput" :class="classname" />
   </div>
 </template>
