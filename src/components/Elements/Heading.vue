@@ -9,6 +9,10 @@ defineProps({
     type: String,
     default: true,
   },
+  Classname: {
+    type: String,
+    default: '',
+  },
 })
 </script>
 
@@ -16,7 +20,7 @@ defineProps({
   <div>
     <component
       :is="`h${level}`"
-      :class="
+      :class="[
         {
           1: 'text-4xl',
           2: 'text-3xl',
@@ -24,8 +28,9 @@ defineProps({
           4: 'text-xl',
           5: 'text-lg',
           6: 'text-base',
-        }[level]
-      "
+        }[level],
+        Classname,
+      ]"
       >{{ text }}</component
     >
   </div>
