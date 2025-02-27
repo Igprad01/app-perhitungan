@@ -1,20 +1,45 @@
 <script setup>
 import InputField from '@/components/Elements/InputField.vue'
-import Teks from '@/components/Elements/Teks.vue'
 import Heading from '@/components/Elements/Heading.vue'
-import Label from '@/components/Elements/Label.vue'
+import Button from '@/components/Elements/Button.vue'
+
+// nanti disini perhitunganya dan skrng buat hasil designnya dulu baru fungsinya
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen p-6">
-    <div class="w-full border-hidden box-border max-w-5/10 bg-amber-400 rounded-md shadow-2xl p-6">
-      <div class="mx-auto"></div>
-      <Heading :level="1" text="Ini adalah H1" />
-      <Label TulisanLabel="ini adalah label" />
-      <InputField
-        teksInput="ini adalah teks"
-        classname="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-      />
+  <div class="flex items-center justify-center min-h-svh md:min-h-svw lg:min-h-screen">
+    <div
+      class="w-full border-hidden box-border max-w-8/10 bg-slate-200 rounded shadow-[5px_3px_0px_0px_rgba(0,_0,_0,_0.95)] p-6"
+    >
+      <div class="mx-auto">
+        <Heading
+          :level="3"
+          text="- App patungan - "
+          Classname=" text-center font-bold uppercase mb-5"
+        />
+        <InputField
+          teksInput="Total Pesanan"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
+        />
+        <InputField
+          teksInput="Jumlah Teman"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
+        />
+        <InputField
+          teksInput="Diskon"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
+        />
+        <InputField
+          teksInput="PPN"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
+        />
+      </div>
+      <div class="flex items-center justify-center min--screen mt-5">
+        <Button
+          Teks="ini adalah button"
+          Classname="px-3 py-3 border border-black outline-2 bg-amber-300  shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
+        />
+      </div>
     </div>
   </div>
 </template>
