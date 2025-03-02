@@ -7,7 +7,6 @@ defineProps({
   },
   Link: {
     type: String,
-    default: true,
   },
   target: {
     type: String,

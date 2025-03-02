@@ -5,15 +5,27 @@ import Heading from '@/components/Elements/Heading.vue'
 import Button from '@/components/Elements/Button.vue'
 import { ref } from 'vue'
 // fungsi menghitung splitbill
-const Pesanan = ref('')
-const TotalTeman = ref('')
-const Diskon = ref('')
-const Ppn = ref('')
+const TotalPesanan = ref(0)
+const TotalTeman = ref(0)
+const Diskon = ref(0)
+const Ppn = ref(0)
 
-const Hitung = () => {
-  let total = parseInt(Pesanan / 3)
+const HitungPatungan = () => {
+  // deklarasi variable
+  let Total = parseFloat(TotalPesanan.value)
+  let JumlahTeman = parseInt(TotalTeman.value)
+  let TotalDiskon = parseFloat(Diskon.value)
+  let TotalPpn = parseFloat(Ppn.value)
+
+  // perhitungan nya
+  let TotalSemuanya = Total - (Total * Diskon) / 100
+  let AfterPPN = TotalSemuanya + (TotalSemuanya * Ppn) / 100
+  let BiayaOrang = AfterPPN / JumlahTeman
+  let totalPembayaran = BiayaOrang * JumlahTeman
+  let Sisa = AfterPPN - totalPembayaran
+
+  console.log()
 }
-// besok dilanjutkan dengan mempelajari algoritnya dan cara kerjanya
 </script>
 
 <template>
@@ -30,7 +42,7 @@ const Hitung = () => {
         <InputField
           teksInput="Total Pesanan"
           classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          v-model="Pesanan"
+          v-model="TotalPesanan"
           type="number"
         />
         <InputField
@@ -52,7 +64,7 @@ const Hitung = () => {
       <div class="flex items-center justify-center min--screen mt-5">
         <Button
           Teks="ini adalah button"
-          Link="/Hasil"
+          @click="HitungPatungan"
           Classname="px-3 py-3 border border-black outline-2 bg-amber-300  shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
         />
       </div>

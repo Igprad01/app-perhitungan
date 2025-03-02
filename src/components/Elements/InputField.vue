@@ -3,6 +3,7 @@ defineProps({
   modelValue: [String, Number],
   type: {
     type: String,
+    Number,
     default: 'text',
   },
 
