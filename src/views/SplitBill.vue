@@ -27,12 +27,12 @@ const HitungPatungan = () => {
   let AfterPPN = TotalSemuanya + (TotalSemuanya * TotalPpn) / 100
   let BiayaOrang = AfterPPN / JumlahTeman
   let totalPembayaran = BiayaOrang * JumlahTeman
-  let Sisa = AfterPPN - totalPembayaran
+  // let Sisa = AfterPPN - totalPembayaran
 
   console.log('jumlah :', TotalSemuanya)
   console.log('Total PPN :', AfterPPN)
   console.log('Total Pembayaran', totalPembayaran)
-  console.log('Sisa yang dibayar: ', Sisa)
+  // console.log('Sisa yang dibayar: ', Sisa)
 }
 </script>
 
