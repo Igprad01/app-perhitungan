@@ -6,16 +6,16 @@ import Button from '@/components/Elements/Button.vue'
 import { ref } from 'vue'
 // fungsi menghitung splitbill
 const TotalPesanan = ref('0')
-const TotalTeman = ref('0')
+const TotalTeman = ref('1')
 const Diskon = ref('0')
 const Ppn = ref('0')
 
 const HitungPatungan = () => {
   // deklarasi variable
-  let Total = parseFloat(TotalPesanan.value)
-  let JumlahTeman = parseInt(TotalTeman.value)
-  let TotalDiskon = parseFloat(Diskon.value)
-  let TotalPpn = parseFloat(Ppn.value)
+  let Total = parseFloat(TotalPesanan.value) || 0
+  let JumlahTeman = parseInt(TotalTeman.value) || 1
+  let TotalDiskon = parseFloat(Diskon.value) || 0
+  let TotalPpn = parseFloat(Ppn.value) || 0
 
   console.log('Total:', Total)
   console.log('Jumlah Teman:', JumlahTeman)
@@ -24,12 +24,15 @@ const HitungPatungan = () => {
 
   // perhitungan nya
   let TotalSemuanya = Total - (Total * TotalDiskon) / 100
-  let AfterPPN = TotalSemuanya + (TotalSemuanya * Ppn) / 100
+  let AfterPPN = TotalSemuanya + (TotalSemuanya * TotalPpn) / 100
   let BiayaOrang = AfterPPN / JumlahTeman
   let totalPembayaran = BiayaOrang * JumlahTeman
   let Sisa = AfterPPN - totalPembayaran
 
   console.log('jumlah :', TotalSemuanya)
+  console.log('Total PPN :', AfterPPN)
+  console.log('Total Pembayaran', totalPembayaran)
+  console.log('Sisa yang dibayar: ', Sisa)
 }
 </script>
 
@@ -53,20 +56,19 @@ const HitungPatungan = () => {
         <InputField
           teksInput="Jumlah Teman"
           classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          @input="TotalTeman = parseFloat($event.target.value)"
+          @input="TotalTeman = parseInt($event.target.value)"
           type="number"
         />
         <InputField
           teksInput="Diskon"
           classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          v-model="Diskon"
           @input="Diskon = parseFloat($event.target.value)"
           type="number"
         />
         <InputField
           teksInput="PPN"
           classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          @input="Diskon = parseFloat($event.target.value)"
+          @input="Ppn = parseFloat($event.target.value)"
           type="number"
         />
       </div>
@@ -80,5 +82,3 @@ const HitungPatungan = () => {
     </div>
   </div>
 </template>
-
-<!-- besok dipelajari agar lebih paham terkait semuanya dan otodidak -->
