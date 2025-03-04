@@ -4,6 +4,7 @@ import InputField from '@/components/Elements/InputField.vue'
 import Heading from '@/components/Elements/Heading.vue'
 import Button from '@/components/Elements/Button.vue'
 import { ref } from 'vue'
+import router from '@/router'
 // fungsi menghitung splitbill
 const TotalPesanan = ref('0')
 const TotalTeman = ref('1')
@@ -33,6 +34,21 @@ const HitungPatungan = () => {
   console.log('Total PPN :', AfterPPN)
   console.log('Total Pembayaran', totalPembayaran)
   // console.log('Sisa yang dibayar: ', Sisa)
+
+  // push ke Hasil
+  router.push({
+    path: '/hasil',
+    query: {
+      Total: Total,
+      JumlahTeman: JumlahTeman,
+      TotalDiskon: TotalDiskon,
+      TotalPpn: TotalPpn,
+      TotalSemuanya: TotalSemuanya,
+      AfterPPN: AfterPPN,
+      BiayaOrang: BiayaOrang,
+      totalPembayaran: totalPembayaran,
+    },
+  })
 }
 </script>
 
@@ -75,6 +91,7 @@ const HitungPatungan = () => {
       <div class="flex items-center justify-center min--screen mt-5">
         <Button
           Teks="ini adalah button"
+          Link="/hasil"
           @click="HitungPatungan"
           Classname="px-3 py-3 border border-black outline-2 bg-amber-300  shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
         />
