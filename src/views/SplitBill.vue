@@ -30,10 +30,6 @@ const HitungPatungan = () => {
   let totalPembayaran = BiayaOrang * JumlahTeman
   // let Sisa = AfterPPN - totalPembayaran
 
-  console.log('jumlah :', TotalSemuanya)
-  console.log('Total PPN :', AfterPPN)
-  console.log('Total Pembayaran', totalPembayaran)
-  // console.log('Sisa yang dibayar: ', Sisa)
 
   // push ke Hasil
   router.push({
