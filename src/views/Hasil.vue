@@ -1,15 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-const TotalHasil = ref([
-  { label: 'ini adalah label', value: 'ini adalah value' },
-  { label: 'ini adalah label', value: '' },
-  { label: 'ini adalah label' },
-])
 
 const route = useRoute()
-const data = route.query
-console.log(data)
+
+const TotalHasil = computed(() => [
+  { label: 'ini adalah label', value: route.query.total },
+  { label: 'ini adalah label', value: route.query.JumlahTeman },
+  { label: 'ini adalah label', value: route.query.TotalDiskon },
+])
 </script>
 
 <template>
@@ -27,4 +26,4 @@ console.log(data)
   </div>
 </template>
 
-<!-- nanti dipikirkan perihal outputnya -->
+<!-- harus pakek local storage -->
