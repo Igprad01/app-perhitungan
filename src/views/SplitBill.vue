@@ -4,47 +4,27 @@ import InputField from '@/components/Elements/InputField.vue'
 import Heading from '@/components/Elements/Heading.vue'
 import Button from '@/components/Elements/Button.vue'
 import { ref } from 'vue'
-import router from '@/router'
+
 // fungsi menghitung splitbill
-const TotalPesanan = ref('0')
-const TotalTeman = ref('1')
-const Diskon = ref('0')
-const Ppn = ref('0')
+const TotalPesanan = ref('')
+const TotalTeman = ref('')
+const Diskon = ref('')
+const Ppn = ref('')
+const HasilData = ref('')
 
 const HitungPatungan = () => {
   // deklarasi variable
-  let Total = parseFloat(TotalPesanan.value) || 0
-  let JumlahTeman = parseInt(TotalTeman.value) || 1
-  let TotalDiskon = parseFloat(Diskon.value) || 0
-  let TotalPpn = parseFloat(Ppn.value) || 0
-
-  console.log('Total:', Total)
-  console.log('Jumlah Teman:', JumlahTeman)
-  console.log('Diskon:', TotalDiskon)
-  console.log('PPN:', TotalPpn)
-
+  let Total = parseFloat(TotalPesanan.value)
+  let JumlahTeman = parseInt(TotalTeman.value)
+  let TotalDiskon = parseFloat(Diskon.value)
+  let TotalPpn = parseFloat(Ppn.value)
   // perhitungan nya
   let TotalSemuanya = Total - (Total * TotalDiskon) / 100
   let AfterPPN = TotalSemuanya + (TotalSemuanya * TotalPpn) / 100
   let BiayaOrang = AfterPPN / JumlahTeman
   let totalPembayaran = BiayaOrang * JumlahTeman
-  // let Sisa = AfterPPN - totalPembayaran
 
-
-  // push ke Hasil
-  router.push({
-    path: '/hasil',
-    query: {
-      Total: Total,
-      JumlahTeman: JumlahTeman,
-      TotalDiskon: TotalDiskon,
-      TotalPpn: TotalPpn,
-      TotalSemuanya: TotalSemuanya,
-      AfterPPN: AfterPPN,
-      BiayaOrang: BiayaOrang,
-      totalPembayaran: totalPembayaran,
-    },
-  })
+  HasilData.value = `Total Pesanan: ${Total}\nJumlah Teman: ${JumlahTeman}\nDiskon: ${TotalDiskon}%\nPPN: ${TotalPpn}%\nTotal Setelah Diskon: ${TotalSemuanya}\nTotal Setelah PPN: ${AfterPPN}\nBiaya Per Orang: ${BiayaOrang}\nTotal Pembayaran: ${totalPembayaran}`
 }
 </script>
 
@@ -61,36 +41,36 @@ const HitungPatungan = () => {
         />
         <InputField
           teksInput="Total Pesanan"
-          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          @input="TotalPesanan = parseFloat($event.target.value)"
+          v-model="TotalPesanan"
           type="number"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
         />
         <InputField
           teksInput="Jumlah Teman"
-          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          @input="TotalTeman = parseInt($event.target.value)"
+          v-model="TotalTeman"
           type="number"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
         />
         <InputField
           teksInput="Diskon"
-          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          @input="Diskon = parseFloat($event.target.value)"
+          v-model="Diskon"
           type="number"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
         />
         <InputField
           teksInput="PPN"
-          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
-          @input="Ppn = parseFloat($event.target.value)"
+          v-model="Ppn"
           type="number"
+          classname="w-full bg-transparent mb-4 py-3 px-3 placeholder:text-black border border-dashed rounded-md border-black text-slate-900 text-sm transition duration-100 focus:outline-dashed shadow-md focus:shadow"
         />
-      </div>
-      <div class="flex items-center justify-center min--screen mt-5">
-        <Button
-          Teks="ini adalah button"
-          Link="/hasil"
-          @click="HitungPatungan"
-          Classname="px-3 py-3 border border-black outline-2 bg-amber-300  shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
-        />
+        <div class="flex items-center justify-center min--screen mt-5">
+          <Button
+            Teks="ini adalah button"
+            @click="HitungPatungan"
+            Classname="px-3 py-3 border border-black outline-2 bg-amber-300  shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
+          />
+        </div>
+        <textarea v-model="HasilData" cols="30" rows="10" class="w-full border p-2 mt-4"></textarea>
       </div>
     </div>
   </div>
