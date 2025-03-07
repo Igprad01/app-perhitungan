@@ -24,13 +24,14 @@ const HitungHasil = () => {
   let Ppn = parseFloat(PPN.value)
 
   // perhitungan
+  //  tinggal fix perhitungan
 
   let TotalSemuanya = Total - (Total * TotalDiskon) / 100
   let sesudahPPN = TotalSemuanya + (TotalSemuanya * Ppn) / 100
   let BiayaOrang = sesudahPPN / JumlahTeman
   let totalPembayaran = BiayaOrang * JumlahTeman
 
-  Hasil.value = `total pesanan: ${Total}, total pesanan: ${Total}${JumlahTeman}, ${TotalDiskon},${Ppn}, ${TotalSemuanya}, ${BiayaOrang}, ${totalPembayaran}`
+  Hasil.value = `Total Pesanan: ${Total}\n Total Teman:${JumlahTeman}\n total Diskon: ${TotalDiskon} \n Total PPN: ${Ppn}\n Total Semuanya: ${TotalSemuanya}\n Total Biaya Per Orang: ${BiayaOrang}\n Total Pembayaran: ${totalPembayaran}`
 }
 
 // tinggal fix font dan tinggal fix proses perhitungan
@@ -39,16 +40,16 @@ const HitungHasil = () => {
 <template>
   <div class="flex items-center justify-center min-h-screen font-Red-Mono">
     <div
-      class="w-full border box-border max-w-7/10 bg-slate-300 p-6 shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
+      class="w-full border box-border max-w-7/10 bg-slate-200 p-6 shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
     >
-      <Heading text="--APP PATUNGAN--" level="5" Classname="font-bold uppercase text-center mb-5" />
+      <Heading text="--APP PATUNGAN--" level="3" Classname="font-bold uppercase text-center mb-5" />
       <InputField
         v-for="(item, index) in ListInput"
         :key="index"
         :teksInput="item.Teks"
         v-model="item.hasil"
         classname="w-full mb-4 py-3 px-3 border rounded-md border-black text bg-slate-100 text-sm transition
-        duration-200 focus:outline-2 shadow-lg focus:shadow"
+        duration-200 focus:shadow-lg focus:outline-none"
       />
       <div class="flex items-center justify-center mt-5">
         <Button
