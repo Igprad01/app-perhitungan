@@ -11,7 +11,7 @@ const PPN = ref('')
 const Hasil = ref('')
 
 const ListInput = ref([
-  { Teks: 'Total Pesanan', hasil: TotalPesanan, tipe: 'number' },
+  { Teks: 'Total Pesanan', hasil: TotalPesanan },
   { Teks: 'Jumlah Teman', hasil: TotalTeman },
   { Teks: 'Total Diskon', hasil: Diskon },
   { Teks: 'Pajak Pesanan', hasil: PPN },
@@ -24,32 +24,29 @@ const HitungHasil = () => {
   let Ppn = parseFloat(PPN.value)
 
   // perhitungan
-  //  tinggal fix perhitungan
 
   let TotalSemuanya = Total - (Total * TotalDiskon) / 100
   let sesudahPPN = TotalSemuanya + (TotalSemuanya * Ppn) / 100
   let BiayaOrang = sesudahPPN / JumlahTeman
-  let totalPembayaran = BiayaOrang * JumlahTeman
 
-  Hasil.value = `Total Pesanan: ${Total}\n Total Teman:${JumlahTeman}\n total Diskon: ${TotalDiskon} \n Total PPN: ${Ppn}\n Total Semuanya: ${TotalSemuanya}\n Total Biaya Per Orang: ${BiayaOrang}\n Total Pembayaran: ${totalPembayaran}`
+  Hasil.value = `Total Pesanan: ${Total}\n Total Teman:${JumlahTeman}\n total Diskon: ${TotalDiskon} \n Total PPN: ${Ppn}\n Total Semuanya: ${TotalSemuanya}\n Total Biaya Per Orang: ${BiayaOrang}\n`
 }
-
-// tinggal fix font dan tinggal fix proses perhitungan
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen font-Red-Mono">
+  <div class="flex items-center justify-center min-h-screen font-Inter">
     <div
       class="w-full border box-border max-w-7/10 bg-slate-200 p-6 shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
     >
-      <Heading text="--APP PATUNGAN--" level="3" Classname="font-bold uppercase text-center mb-5" />
+      <Heading text="- APP PATUNGAN -" level="4" Classname="font-bold uppercase text-center mb-5" />
       <InputField
         v-for="(item, index) in ListInput"
         :key="index"
         :teksInput="item.Teks"
         v-model="item.hasil"
+        type="item.type"
         classname="w-full mb-4 py-3 px-3 border rounded-md border-black text bg-slate-50 text-sm transition
-        duration-200 focus:shadow-lg focus:outline-none"
+        duration-200  focus:shadow-lg focus:outline-none"
       />
       <div class="flex items-center justify-center mt-5">
         <Button
@@ -62,3 +59,4 @@ const HitungHasil = () => {
     </div>
   </div>
 </template>
+
