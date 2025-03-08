@@ -48,14 +48,14 @@ const HitungHasil = () => {
         :key="index"
         :teksInput="item.Teks"
         v-model="item.hasil"
-        classname="w-full mb-4 py-3 px-3 border rounded-md border-black text bg-slate-100 text-sm transition
+        classname="w-full mb-4 py-3 px-3 border rounded-md border-black text bg-slate-50 text-sm transition
         duration-200 focus:shadow-lg focus:outline-none"
       />
       <div class="flex items-center justify-center mt-5">
         <Button
           Teks="Hitung Patungan"
           @click="HitungHasil"
-          Classname="px-4 py-4 bg-amber-500 outline shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)]"
+          Classname="px-4 py-4 bg-amber-500 outline shadow-[8px_5px_0px_0px_rgba(0,_0,_0,_0.95)] font-bold"
         />
       </div>
       <textarea v-model="Hasil" class="border w-full mt-5" cols="50" rows="5" disabled></textarea>
