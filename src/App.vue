@@ -1,5 +1,5 @@
 <script setup>
-import splitBill from './splitBill.vue';
+import splitBill from './views/splitBill.vue';
 </script>
 
 <template>
