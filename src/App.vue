@@ -1,8 +1,9 @@
-<script setup></script>
+<script setup>
+import splitBill from './views/splitBill.vue';
+</script>
 
 <template>
   <div class="wrapper">
-    <Home />
+    <splitBill />
   </div>
-  <RouterView />
 </template>
