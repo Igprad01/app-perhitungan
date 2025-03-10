@@ -44,7 +44,7 @@ const HitungHasil = () => {
         :key="index"
         :teksInput="item.Teks"
         v-model="item.hasil"
-        type="item.type"
+        type="number"
         classname="w-full mb-4 py-3 px-3 border rounded-md border-black text bg-slate-50 text-sm transition
         duration-200  focus:shadow-lg focus:outline-none"
       />
@@ -59,4 +59,3 @@ const HitungHasil = () => {
     </div>
   </div>
 </template>
-
